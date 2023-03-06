@@ -12,7 +12,7 @@ import LoadingDots from "../components/LoadingDots";
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const [bio, setBio] = useState("");
-  const [vibe, setVibe] = useState<VibeType>("Professional");
+  const [vibe, setVibe] = useState<VibeType>("Anime");
   const [generatedBios, setGeneratedBios] = useState<String>("");
 
   const bioRef = useRef<null | HTMLDivElement>(null);
@@ -73,7 +73,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-5xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Twitter Bio Generator</title>
+        <title>Comic Generator</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
