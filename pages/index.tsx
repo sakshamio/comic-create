@@ -31,6 +31,8 @@ const Home: NextPage = () => {
       Make sure each generated biography is less than 160 characters, has short sentences that are found in Twitter bios, and base them on this context: ${bio}${
     bio.slice(-1) === "." ? "" : "."
   }`;
+  
+  const prompt2 = `For the following prompt, write a detailed story which will form the basis of a more detailed comic book. The story should have multiple characters with interesting and varied background stories, and gorgeous backdrops. Prompt: ${bio}`;
 
   const generateBio = async (e: any) => {
     e.preventDefault();
@@ -157,7 +159,7 @@ const Home: NextPage = () => {
                   className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto"
                   ref={bioRef}
                 >
-                  Your generated bios
+                  Initial storyline...
                 </h2>
               </div>
               <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
