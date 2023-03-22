@@ -23,7 +23,7 @@ const Home: NextPage = () => {
     }
   };
 
-  const prompt = `Generate 2 ${vibe} twitter biographies with no hashtags and clearly labeled "1." and "2.". ${
+  const prompt2 = `Generate 2 ${vibe} twitter biographies with no hashtags and clearly labeled "1." and "2.". ${
     vibe === "Anime"
       ? "Anime style environmental 8k realistic colorful"
       : null
@@ -32,7 +32,7 @@ const Home: NextPage = () => {
     bio.slice(-1) === "." ? "" : "."
   }`;
   
-  const prompt2 = `For the following prompt, write a detailed story which will form the basis of a more detailed comic book. The story should have multiple characters with interesting and varied background stories, and gorgeous backdrops. Prompt: ${bio}`;
+  const prompt = `For the following prompt, write a detailed story which will form the basis of a more detailed comic book. The story should have multiple characters with interesting and varied background stories, and gorgeous backdrops. Prompt: ${bio}`;
 
   const generateBio = async (e: any) => {
     e.preventDefault();
@@ -172,7 +172,7 @@ const Home: NextPage = () => {
                         className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
                         onClick={() => {
                           navigator.clipboard.writeText(generatedBio);
-                          toast("Bio copied to clipboard", {
+                          toast("Story copied to clipboard", {
                             icon: "✂️",
                           });
                         }}
