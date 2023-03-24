@@ -37,6 +37,7 @@ const Home: NextPage = () => {
   Prompt: ${bio}
   JSON format: 
   {
+  "short_story": e,
   "primary_characters"/"secondary_characters":
     [
       {
@@ -47,7 +48,7 @@ const Home: NextPage = () => {
       }
     ]
   }
-  where a is the name of the character, b is the physical description of the character - Describe colors, clothing styles, textures in details, c is detailed background story of the character including but not limited to geaographical origin, dramatic family story, etc. d is the gender of the character (Male/Female/Other). 
+  where e is a detailed story which will form the basis of a more detailed comic book. The story should have multiple characters with interesting and varied background stories, and gorgeous backdrops, a is the name of the character, b is the physical description of the character - Describe colors, clothing styles, textures in details, c is detailed background story of the character including but not limited to geaographical origin, dramatic family story, etc. d is the gender of the character (Male/Female/Other). 
   Generate detailed character biopsies, and stylish, eye-catching physical descriptions for atleast two primary characters, and two secondary characters.
   Only return strings in valid JSON format, which can be read by a JSON parser. 
   `;
@@ -176,7 +177,7 @@ const Home: NextPage = () => {
                   className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto"
                   ref={bioRef}
                 >
-                  Initial storyline...
+                  Initial storyline and characters...
                 </h2>
               </div>
               <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
