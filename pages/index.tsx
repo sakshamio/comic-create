@@ -32,8 +32,25 @@ const Home: NextPage = () => {
     bio.slice(-1) === "." ? "" : "."
   }`;
   
-  const prompt = `For the following prompt, write a detailed story which will form the basis of a more detailed comic book. The story should have multiple characters with interesting and varied background stories, and gorgeous backdrops. Prompt: ${bio}`;
-
+  const prompt_ = `For the following prompt, write a detailed story which will form the basis of a more detailed comic book. The story should have multiple characters with interesting and varied background stories, and gorgeous backdrops. Prompt: ${bio}`;
+  const prompt = `For the following prompt about a fictional story, return a JSON object detailing possible characters that would be present in the story in the given format:
+  Prompt: ${bio}
+  JSON format: 
+  {
+  "primary_characters"/"secondary_characters":
+    [
+      {
+      "character_name": a,
+      "character_pd": b,
+      "character_bs": c,
+      "character_gender": d,
+      }
+    ]
+  }
+  where a is the name of the character, b is the physical description of the character - Describe colors, clothing styles, textures in details, c is detailed background story of the character including but not limited to geaographical origin, dramatic family story, etc. d is the gender of the character (Male/Female/Other). 
+  Generate detailed character biopsies, and stylish, eye-catching physical descriptions for atleast two primary characters, and two secondary characters.
+  Only return strings in valid JSON format, which can be read by a JSON parser. 
+  `;
   const generateBio = async (e: any) => {
     e.preventDefault();
     setGeneratedBios("");
@@ -71,25 +88,6 @@ const Home: NextPage = () => {
     scrollToBios();
     setLoading(false);
   };
-  
-  const character_prompt = `For the following prompt about a fictional story, return a JSON object detailing possible characters present in the story in the given format:
-  Prompt: ${bio}
-  JSON format: 
-  {
-  "primary_characters"/"secondary_characters":
-    [
-      {
-      "character_name": a,
-      "character_pd": b,
-      "character_bs": c,
-      "character_gender": d,
-      }
-    ]
-  }
-  where a is the name of the character, b is the physical description of the character - Describe colors, clothing styles, textures in details, c is detailed background story of the character including but not limited to geaographical origin, dramatic family story, etc. d is the gender of the character (Male/Female/Other). 
-  Generate detailed character biopsies, and stylish, eye-catching physical descriptions for atleast two primary characters, and two secondary characters.
-  Only return strings in valid JSON format, which can be read by a JSON parser. 
-  `;
   
   return (
     <div className="flex max-w-5xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
