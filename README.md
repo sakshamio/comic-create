@@ -1,27 +1,33 @@
-# [TwitterBio.com](https://www.twitterbio.com/)
+# Multimodal Computer Vision and NLP Project: Creating Unlimited Graphic Novels from a Single Prompt
 
-This project generates Twitter bios for you using AI.
+This is a GitHub repository for a multimodal computer vision and natural language processing (NLP) project that aims to generate unlimited graphic novels from a single prompt. The project uses multiple openAI APIs like the ChatGPT API, the Dall-E 2 API, and Vercel edge functions.
 
-[![Twitter Bio Generator](./public/screenshot.png)](https://www.twitterbio.com)
+## Project Overview
 
-## How it works
+The goal of this project is to create an AI-powered system that can generate graphic novels from a single prompt. The system uses a combination of computer vision and NLP techniques to analyze the prompt and generate a story with corresponding images. The system is powered by multiple openAI APIs, including the ChatGPT API, which provides the NLP capabilities, and the Dall-E 2 API, which provides the image generation capabilities. Vercel edge functions are used to connect these APIs and create a seamless experience for the user.
 
-This project uses the [ChatGPT API](https://openai.com/api/) and [Vercel Edge functions](https://vercel.com/features/edge-functions) with streaming. It constructs a prompt based on the form and user input, sends it to the chatGPT API via a Vercel Edge function, then streams the response back to the application.
+## Requirements
 
-If you'd like to see how I built this, check out the [video](https://youtu.be/JcE-1xzQTE0) or [blog post](https://vercel.com/blog/gpt-3-app-next-js-vercel-edge-functions).
+To run this project, you will need to have the following:
 
-## Running Locally
+A valid API key for the openAI ChatGPT API and Dall-E 2 API
+Node.js (version 14 or later)
+NPM (version 6 or later)
 
-After cloning the repo, go to [OpenAI](https://beta.openai.com/account/api-keys) to make an account and put your API key in a file called `.env`.
+## Usage
 
-Then, run the application in the command line and it will be available at `http://localhost:3000`.
+Start the server and the system will be available at http://localhost:3000.
 
-```bash
-npm run dev
-```
+To generate a graphic novel, enter a prompt in the input field and click the "Generate" button. The system will then use the openAI ChatGPT API to generate a story and the Dall-E 2 API to generate corresponding images. The resulting graphic novel will be displayed on the screen.
 
-## One-Click Deploy
+## Contributing
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
+Contributions to this project are welcome. To contribute, fork the repository and submit a pull request. Please include a detailed description of your changes.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nutlope/twitterbio&env=OPENAI_API_KEY&project-name=twitter-bio-generator&repo-name=twitterbio)
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Contact
+
+If you have any questions or feedback, please feel free to contact the project contributors at [email address].
