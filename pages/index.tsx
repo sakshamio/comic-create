@@ -33,7 +33,7 @@ const Home: NextPage = () => {
   }`;
   
   const prompt_ = `For the following prompt, write a detailed story which will form the basis of a more detailed comic book. The story should have multiple characters with interesting and varied background stories, and gorgeous backdrops. Prompt: ${bio}`;
-  const prompt = `For the following prompt about a fictional story, return a JSON object detailing possible characters that would be present in the story in the given format:
+  const prompt = `You are a master story-teller. Your stories are creative, have well thought out characters with interesting characters. You primarily write stories and create characters for graphic novels and comic books. For the following prompt about a fictional story, return a JSON object with a short story that will later be a fully fledged comic and detailing possible characters that would be present in the story in the given format:
   Prompt: ${bio}
   JSON format: 
   {
