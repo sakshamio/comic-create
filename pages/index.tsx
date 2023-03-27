@@ -11,15 +11,25 @@ import LoadingDots from "../components/LoadingDots";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
+  const [loadingDetailed, setLoadingDetailed] = useState(false);
   const [bio, setBio] = useState("");
   const [vibe, setVibe] = useState<VibeType>("Anime");
   const [generatedBios, setGeneratedBios] = useState<String>("");
+  const [generatedDetailed, setGeneratedDetailed] = useState<String>("");
 
   const bioRef = useRef<null | HTMLDivElement>(null);
 
   const scrollToBios = () => {
     if (bioRef.current !== null) {
       bioRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const detailedRef = useRef<null | HTMLDivElement>(null);
+
+  const scrollToDetailed = () => {
+    if (detailedRef.current !== null) {
+      detailedRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -88,6 +98,53 @@ const Home: NextPage = () => {
     }
     scrollToBios();
     setLoading(false);
+  };
+
+
+  prompt_detailed = `
+  You are a master story-teller. Your stories are creative, have well thought out characters with interesting characters. You primarily write stories and create characters for graphic novels and comic books. 
+  In the prompt below, a short story, with very detailed descriptions of relevant characters is given. 
+  Use this story as a base to generate a longform detailed storyline with multiple sub-events, with a grand conclusion. 
+  The story you generate will be used as a base to create detailed scene descriptions for every scene in the story, so be sure to mention even minute details.
+  Prompt: ${generatedBios}
+  `
+
+  const generatedetailed = async (e: any) => {
+    e.preventDefault();
+    setGeneratedDetailed("");
+    setLoadingDetailed(true);
+    const response = await fetch("/api/generate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        prompt_detailed,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    // This data is a ReadableStream
+    const data = response.body;
+    if (!data) {
+      return;
+    }
+
+    const reader = data.getReader();
+    const decoder = new TextDecoder();
+    let done = false;
+
+    while (!done) {
+      const { value, done: doneReading } = await reader.read();
+      done = doneReading;
+      const chunkValue = decoder.decode(value);
+      setGeneratedDetailed((prev) => prev + chunkValue);
+    }
+    scrollToDetailed());
+    setLoadingDetailed(false);
   };
   
   return (
@@ -197,6 +254,64 @@ const Home: NextPage = () => {
                         key={generatedBio}
                       >
                         <p>{generatedBio}</p>
+                      </div>
+                    );
+                  })}
+              </div>
+            </>
+          )}
+        </div>
+        {!loadingDetailed && (
+            <button
+              className="bg-black rounded-xl text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
+              onClick={(e) => generatedetailed(e)}
+            >
+              I like this! Generate a more detailed storyline! &rarr;
+            </button>
+          )}
+          {loadingDetailed && (
+            <button
+              className="bg-black rounded-xl text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
+              disabled
+            >
+              <LoadingDots color="white" style="large" />
+            </button>
+          )}
+        </div>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+          toastOptions={{ duration: 2000 }}
+        />
+        <hr className="h-px bg-gray-700 border-1 dark:bg-gray-700" />
+        <div className="space-y-10 my-10">
+          {generatedDetailed && (
+            <>
+              <div>
+                <h2
+                  className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto"
+                  ref={detailedRef}
+                >
+                  More detailed storyline...
+                </h2>
+              </div>
+              <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
+                {generatedDetailed
+                  //.substring(generatedBios.indexOf("1") + 3)
+                  .split("2.")
+                  .map((generateddetailed) => {
+                    return (
+                      <div
+                        className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
+                        onClick={() => {
+                          navigator.clipboard.writeText(generatedetailed);
+                          toast("Story copied to clipboard", {
+                            icon: "✂️",
+                          });
+                        }}
+                        key={generateddetailed}
+                      >
+                        <p>{generateddetailed}</p>
                       </div>
                     );
                   })}
