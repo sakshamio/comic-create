@@ -30,4 +30,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ## Contact
 
-If you have any questions or feedback, please feel free to contact the project contributors at [email address].
+If you have any questions or feedback, please feel free to contact the project contributors at [gupta[dot]saksham[at]gmail[dot]com].
