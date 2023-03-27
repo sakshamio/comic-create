@@ -101,13 +101,11 @@ const Home: NextPage = () => {
   };
 
 
-  prompt_detailed = `
-  You are a master story-teller. Your stories are creative, have well thought out characters with interesting characters. You primarily write stories and create characters for graphic novels and comic books. 
+  const prompt_detailed = `You are a master story-teller. Your stories are creative, have well thought out characters with interesting characters. You primarily write stories and create characters for graphic novels and comic books. 
   In the prompt below, a short story, with very detailed descriptions of relevant characters is given. 
   Use this story as a base to generate a longform detailed storyline with multiple sub-events, with a grand conclusion. 
   The story you generate will be used as a base to create detailed scene descriptions for every scene in the story, so be sure to mention even minute details.
-  Prompt: ${generatedBios}
-  `
+  Prompt: ${generatedBios}`
 
   const generatedetailed = async (e: any) => {
     e.preventDefault();
