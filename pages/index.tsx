@@ -141,7 +141,7 @@ const Home: NextPage = () => {
       const chunkValue = decoder.decode(value);
       setGeneratedDetailed((prev) => prev + chunkValue);
     }
-    scrollToDetailed());
+    scrollToDetailed();
     setLoadingDetailed(false);
   };
   
